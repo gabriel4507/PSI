@@ -20,7 +20,13 @@ namespace PrimeiroMetodo
             Console.WriteLine();
 
             ContarAteN(20);
+        Console.WriteLine();
+
+ContarAteN(2, 4);
+
+
         }
+
 
         private static void ContarAteN(int nr){
 
@@ -29,8 +35,16 @@ namespace PrimeiroMetodo
                 Console.WriteLine(i);
             }
         }
+private static void ContarAteN( int nr, int ns){
 
+            for(int i = nr; i <= ns; i++){
+            
+                Console.WriteLine(i);
+            }
+
+}
 
 
     }
 }
+    

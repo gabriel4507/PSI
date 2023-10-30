@@ -79,7 +79,7 @@ namespace NPCPerks
                 }
                 
                 Console.WriteLine();
-            }
+              }
             
             // Ciclo FOR para categorizar cada NPC
             for (int i = 0; i < numNPCs; i++)
