@@ -7,7 +7,8 @@ namespace GestorAnimais
         static void Main(string[] args)
         {
 
-    
+
+          
             List<Animais> animais = new List<Animais>
             {
                 new Animais("Elefante", 5000),
@@ -15,6 +16,8 @@ namespace GestorAnimais
             };          
             string nome = "";
 
+            animais.Sort();
+          
           do
            { 
             Console.WriteLine("Digite o nome do animal: ");
@@ -25,6 +28,7 @@ namespace GestorAnimais
               int peso = int.Parse(Console.ReadLine());
               Animais animal = new Animais(nome , peso);
               animais.Add(animal);
+              animais.Sort();
               }
             }while(nome != "x");
 
@@ -34,7 +38,7 @@ namespace GestorAnimais
             {
                 Console.WriteLine("Digite o peso minimo: ");
                 int pesoMinimo = int.Parse(Console.ReadLine());
-                List<Animais>animaisMP =  GetAnimaisComPesoMaiorQue(pesoMinimo , animais);
+                IEnumerable<Animais>animaisMP =  GetAnimaisComPesoMaiorQue(pesoMinimo , animais);
                 foreach(Animais animal in animaisMP)
                 {
                   Console.WriteLine(animal.Nome);
@@ -50,21 +54,18 @@ namespace GestorAnimais
               }
             }
           
-           static List<Animais> GetAnimaisComPesoMaiorQue(int pesoMinimo , List<Animais> animais)
+           static IEnumerable<Animais> GetAnimaisComPesoMaiorQue(int pesoMinimo , List<Animais> animais)
             {
-                List<Animais> animaisComPesoMaiorQue = new List<Animais>();
-
+               
                   foreach(Animais animal in animais)
                   {
                     if(animal.Peso > pesoMinimo)
                     {
-                      animaisComPesoMaiorQue.Add(animal);
+                      yield return animal;
                     }
                     
                   }
-                  
-              return animaisComPesoMaiorQue;
-        }
+              }
     }
 }
 }
